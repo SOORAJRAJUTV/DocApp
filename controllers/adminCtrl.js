@@ -43,8 +43,8 @@ const getAllDoctorsController = async (req, res) => {
 const changeAccountStatusController = async (req, res) => {
   try {
     const { doctorId, status } = req.body;
-    const doctors = await doctorModel.findByIdAndUpdate(doctorId, { status });
-    const user = await userModel.findOne({ _id: doctors.userId });
+    const doctor = await doctorModel.findByIdAndUpdate(doctorId, { status });
+    const user = await userModel.findOne({ _id: doctor.userId });
     const notification = user.notification;
     notification.push({
       type: "doctor-account-request-updated",
@@ -56,7 +56,7 @@ const changeAccountStatusController = async (req, res) => {
     res.status(201).send({
       success: true,
       message: "Account Status Updated",
-      data: doctors,
+      data: doctor,
     });
   } catch (error) {
     console.log(error);

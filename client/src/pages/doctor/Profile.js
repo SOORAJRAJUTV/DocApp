@@ -20,10 +20,10 @@ const Profile = () => {
     try{
       dispatch(showLoading())
       const res=await axios.post('/api/v1/doctor/updateProfile',{...values,userId:user._id,
-      timings:[
-        moment(values.timings[0],'HH:mm'),
-        moment(values.timings[1],'HH:mm')
-      ]},{
+      // timings:[
+      //   moment(values.timings[0],'HH:mm'),
+      //   moment(values.timings[1],'HH:mm')
+      // ]},
          headers:{
              Authorization:`Bearer ${localStorage.getItem('token')}`
          }
@@ -69,10 +69,10 @@ const Profile = () => {
       <h1>Manage Profile</h1>
       {doctor && (      <Form layout="vertical" onFinish={handleFinish} className="m-3" initialValues={{
         ...doctor,
-        timings:[
-          moment(doctor.timings[0]).format('HH:mm'),
-          moment(doctor.timings[1]).format('HH:mm')
-        ]
+        // timings:[
+        //   moment(doctor.timings[0]).format('HH:mm'),
+        //   moment(doctor.timings[1]).format('HH:mm')
+        // ]
       }}>
         <h4 className="">Personal Details :</h4>
         <Row gutter={20}>

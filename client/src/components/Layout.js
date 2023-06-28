@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 // const {applyDoctorController} = require("../controllers/userCtrl");
 
 const Layout = ({ children }) => {
-  const { user } = useSelector(state => state.user);
+  const { user } = useSelector((state) => state.user);
   const location = useLocation();
   const navigate =useNavigate();
 
@@ -81,7 +81,7 @@ const Layout = ({ children }) => {
               <i class="fa-solid fa-bell"></i>
               </Badge>
 
-              <Link to="/profile">{user?.name}</Link>
+              <Link to="/profile/:id">{user?.name}</Link>
               </div>
             </div>
             <div className="body">{children}</div>

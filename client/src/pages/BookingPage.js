@@ -178,16 +178,18 @@ const BookingPage = () => {
   //changed post to get chatgpt
   const getUserData = async () => {
     try {
-      console.log("line 181");
+      console.log(localStorage.getItem('token'));
+
       const res = await axios.post("/api/v1/doctor/getDoctorById",
       {
         params: { doctorId: params.doctorId },
-        // headers: {
-        //   Authorization: `Bearer ${localStorage.getItem('token')}`
-        // },
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+     
       }
       );
-      console.log("eqwertyuiopqwertyuiop");   
+     
       if (res.data.success) {
         
         setDoctors(res.data.data);

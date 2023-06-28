@@ -152,7 +152,7 @@ const ApplyDoctor = () => {
             </Form.Item>
           </Col>
 
-          <Col xs={24} md={24} lg={8}>
+          {/* <Col xs={24} md={24} lg={8}>
             <Form.Item
               label="Status"
               name="status"
@@ -161,7 +161,7 @@ const ApplyDoctor = () => {
             >
               <Input type="text" placeholder="status" />
             </Form.Item>
-          </Col>
+          </Col> */}
 
           <Col xs={24} md={24} lg={8}>
             <Form.Item
@@ -175,9 +175,11 @@ const ApplyDoctor = () => {
           </Col>
 
           <Col xs={24} md={24} lg={8}>
-            <button className="btn btn-primary form-btn" type="submit">
+            <div className="parent">
+            <button className="btn btn-primary form-btn " type="submit">
               Submit
             </button>
+            </div>
           </Col>
         </Row>
       </Form>
