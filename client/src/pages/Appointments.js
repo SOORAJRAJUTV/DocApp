@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import Layout from "../components/Layout";
 import {showLoading, hideLoading } from "../redux/features/alertSlice";
 import axios from "axios";
-import { Table } from "antd";
+import { Table,message } from "antd";
 import moment from "moment";
 
 // /api/v1/user/user-appointments
@@ -11,49 +11,53 @@ import moment from "moment";
 function Appointments() {
   const [appointments, setAppointments] = useState([]);
   const dispatch = useDispatch();
+
   const getAppointments = async () => {
     try {
-      // dispatch(showLoading());
       
-      const res = await axios.get("/api/v1/user/userappointments", {
+      const res = await axios.get('/api/v1/user/user-appointments', {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
       dispatch(hideLoading());
       if (res.data.success) {
         setAppointments(res.data.data);
+        
       }
     } catch (error) {
       dispatch(hideLoading());
     }
   };
+
+
+
+  useEffect(() => {
+    getAppointments();
+  }, []);
+
+ 
+
+
   const columns = [
     {
-        title: "Id",
-        dataIndex: "_id",
+        title: "ID",
+        dataIndex: '_id',
     },
+
     {
       title: "Name",
-      dataIndex: "name",
+      dataIndex: 'name',
       render: (text, record) => (
         <span>
           {record.doctorId.firstName} {record.doctorId.lastName}
         </span>
       ),
     },
-    {
-      title: "Phone",
-      dataIndex: "phone",
-      render: (text, record) => (
-        <span>
-          {record.doctorId.phone} 
-        </span>
-      ),
-    },
+
     {
       title: "Date & Time",
-      dataIndex: "date",
+      dataIndex: 'date',
       render: (text, record) => (
         <span>
           {moment(record.date).format("DD-MM-YYYY")} &nbsp;
@@ -63,16 +67,13 @@ function Appointments() {
     },
     {
         title: "Status",
-        dataIndex: "status",
-    }
+        dataIndex: 'status',
+    },
+   
   ];
-  useEffect(() => {
-    getAppointments();
-  }, []);
 
-
-  return ( <Layout>
-  <h1 className="page-title">Appointments List</h1>
+ return ( <Layout>
+  <h1 className="page-title">Appointments</h1>
   <hr />
   <Table columns={columns} dataSource={appointments} />
 </Layout>);

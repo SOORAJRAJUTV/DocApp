@@ -46,7 +46,7 @@ router.post("/book-appointment", authMiddleware, bookAppointmentController);
 router.post("/booking-availability", authMiddleware,bookingAvailabilityController);
 
 //Appointments List
-router.get("/userappointments", authMiddleware, userAppointmentsController);
+router.get("/user-appointments", authMiddleware, userAppointmentsController);
 
 module.exports = router;
 

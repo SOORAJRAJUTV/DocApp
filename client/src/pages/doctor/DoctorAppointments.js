@@ -139,6 +139,8 @@
 //   );
 // }
 
+
+
 // export default DoctorAppointments;
 
 
@@ -152,7 +154,7 @@ import { Table } from "antd";
 import moment from "moment";
 
 const DoctorAppointments = () => {
-  const [appointments, setAppointments] = useState([]);
+  const [docappointments, setdocAppointments] = useState([]);
   const dispatch = useDispatch();
 
   const getAppointments = async () => {
@@ -165,7 +167,7 @@ const DoctorAppointments = () => {
       });
       dispatch(hideLoading());
       if (res.data.success) {
-        setAppointments(res.data.data);
+        setdocAppointments(res.data.data);
       }
     } catch (error) {
       dispatch(hideLoading());
@@ -175,8 +177,7 @@ const DoctorAppointments = () => {
   const handleStatus = async (record, status) => {
     try {
       dispatch(showLoading());
-      const res = await axios.post(
-        "/api/v1/doctor/update-status",
+      const res = await axios.post("/api/v1/doctor/update-status",
         { appointmentsId: record._id, status },
         {
           headers: {
@@ -200,16 +201,18 @@ const DoctorAppointments = () => {
       title: "Id",
       dataIndex: "_id",
     },
-    {
-      title: "Patient",
-      dataIndex: "name",
-      render: (text, record) => <span>{record.userInfo.name}</span>,
-    },
-    {
-      title: "Phone",
-      dataIndex: "phone",
-      render: (text, record) => <span>{record.doctorInfo.phoneNumber}</span>,
-    },
+
+    // {
+    //   title: "Patient",
+    //   dataIndex: "name",
+    //   render: (text, record) => <span>{record.userInfo.name}</span>,
+    // },
+    // {
+    //   title: "Phone",
+    //   dataIndex: "phone",
+    //   render: (text, record) => <span>{record.doctorInfo.phone}</span>,
+    // },
+   
     {
       title: "Date & Time",
       dataIndex: "createdAt",
@@ -224,6 +227,7 @@ const DoctorAppointments = () => {
       title: "Status",
       dataIndex: "status",
     },
+
     {
       title: "Actions",
       dataIndex: "actions",
@@ -231,18 +235,8 @@ const DoctorAppointments = () => {
         <div className="d-flex">
           {record.status === "pending" && (
             <div className="d-flex">
-              <button
-                className="btn btn-success"
-                onClick={() => handleStatus(record, "approved")}
-              >
-                Approved
-              </button>
-              <button
-                className="btn btn-danger ms-2"
-                onClick={() => handleStatus(record, "rejected")}
-              >
-                Rejected
-              </button>
+              <button className="btn btn-success" onClick={() => handleStatus(record, "approved")} >Approved</button>
+              <button  className="btn btn-danger" onClick={() => handleStatus(record, "rejected")}> Rejected</button>
             </div>
           )}
         </div>
@@ -256,9 +250,9 @@ const DoctorAppointments = () => {
 
   return (
     <Layout>
-      <h1 className="page-header">Appointments</h1>
+      <h1 className="page-header">Appointments List</h1>
       <hr />
-      <Table columns={columns} dataSource={appointments} />
+      <Table columns={columns} dataSource={docappointments} />
     </Layout>
   );
 };

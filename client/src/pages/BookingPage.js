@@ -34,6 +34,7 @@ const BookingPage = () => {
 
   const handleBooking = async () => {
     try {
+      setIsAvailable(true);
       if (!date || !time) {
         return message.error("Date and time are required.");
       }
@@ -109,19 +110,9 @@ const BookingPage = () => {
                 format="HH:mm"
                 onChange={value => setTime(value)}
               />
-              <button
-                className="btn btn-primary m-2"
-                onClick={handleAvailability}
-              >
-                Check Availability
-              </button>
-              {isAvailable && (
-                <button
-                  className="btn btn-primary m-2"
-                  onClick={handleBooking}
-                >
-                  Book Appointment
-                </button>
+              <button className="btn btn-primary m-2" onClick={handleAvailability}>  Check Availability</button>
+              {!isAvailable && (
+                <button className="btn btn-primary m-2" onClick={handleBooking}>  Book Appointment</button>
               )}
             </div>
           </div>
