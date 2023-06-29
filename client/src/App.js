@@ -13,8 +13,9 @@ import Doctors from "./pages/admin/Doctors";
 import Profile from "./pages/doctor/Profile";
 import BookingPage from "./pages/BookingPage";
 import { useParams } from "react-router-dom";
-import DoctorAppointments from "./pages/Appointments";
+
 import Appointments from "./pages/Appointments";
+import DoctorAppointments from "./pages/doctor/DoctorAppointments";
 
 /*  <Route path="/user/book-appointment/:doctorId" element={
           <ProtectedRoute> <BookingPage/> </ProtectedRoute> } />
@@ -61,7 +62,7 @@ function App() {
           <ProtectedRoute> <Appointments/></ProtectedRoute> } />
 
           <Route path="/doctor-appointments" element={
-          <ProtectedRoute> <DoctorAppointments /></ProtectedRoute> } />
+          <ProtectedRoute> <DoctorAppointments/></ProtectedRoute> } />
 
 
           <Route path="/" element={

@@ -39,14 +39,18 @@ router.post("/delete-all-notification",authMiddleware, deleteAllNotificationCont
 //GET ALL DOC
 router.get("/getAllDoctors", authMiddleware, getAllDoctorsController);
 
-//BOOK APPOINTMENT
-router.post("/book-appointment", authMiddleware, bookAppointmentController);
 
 //Booking Avliability
 router.post("/booking-availability", authMiddleware,bookingAvailabilityController);
 
+
+//BOOK APPOINTMENT
+router.post("/book-appointment", authMiddleware, bookAppointmentController);
+
+
+
 //Appointments List
-router.get("/user-appointments", authMiddleware, userAppointmentsController);
+router.get("/user-appointments",authMiddleware, userAppointmentsController);
 
 module.exports = router;
 

@@ -147,36 +147,41 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Layout from "../../components/Layout";
-import { showLoading, hideLoading } from "../../redux/alertsSlice";
-import { message } from "antd";
+
+import { message,Table } from "antd";
 import axios from "axios";
-import { Table } from "antd";
 import moment from "moment";
 
 const DoctorAppointments = () => {
-  const [docappointments, setdocAppointments] = useState([]);
-  const dispatch = useDispatch();
+  const [appointments, Appointments] = useState([]);
+//   const dispatch = useDispatch();
 
   const getAppointments = async () => {
     try {
-      dispatch(showLoading());
+    //   dispatch(showLoading());
       const res = await axios.get("/api/v1/doctor/doctor-appointments", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      dispatch(hideLoading());
+    //   dispatch(hideLoading());
       if (res.data.success) {
-        setdocAppointments(res.data.data);
+        Appointments(res.data.data);
       }
     } catch (error) {
-      dispatch(hideLoading());
+    //   dispatch(hideLoading());
     }
   };
 
+
+  useEffect(() => {
+    getAppointments();
+  }, []);
+
+
   const handleStatus = async (record, status) => {
     try {
-      dispatch(showLoading());
+    //   dispatch(showLoading());
       const res = await axios.post("/api/v1/doctor/update-status",
         { appointmentsId: record._id, status },
         {
@@ -185,14 +190,14 @@ const DoctorAppointments = () => {
           },
         }
       );
-      dispatch(hideLoading());
+    //   dispatch(hideLoading());
       if (res.data.success) {
         message.success(res.data.message);
         getAppointments();
       }
     } catch (error) {
       message.error("Error changing doctor account status");
-      dispatch(hideLoading());
+    //   dispatch(hideLoading());
     }
   };
 
@@ -244,15 +249,12 @@ const DoctorAppointments = () => {
     },
   ];
 
-  useEffect(() => {
-    getAppointments();
-  }, []);
 
   return (
     <Layout>
-      <h1 className="page-header">Appointments List</h1>
+      <h1 className="page-header">Appointments </h1>
       <hr />
-      <Table columns={columns} dataSource={docappointments} />
+      <Table columns={columns} dataSource={appointments} />
     </Layout>
   );
 };
