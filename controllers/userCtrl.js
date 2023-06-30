@@ -75,6 +75,7 @@ const loginController = async (req, res) => {
           data: user
         });
       }
+  
     } catch (error) {
       console.log(error);
       res.status(500).send({

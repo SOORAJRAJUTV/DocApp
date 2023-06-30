@@ -16,6 +16,7 @@ import { useParams } from "react-router-dom";
 
 import Appointments from "./pages/Appointments";
 import DoctorAppointments from "./pages/doctor/DoctorAppointments";
+import Notes from "./pages/doctor/Notes";
 
 /*  <Route path="/user/book-appointment/:doctorId" element={
           <ProtectedRoute> <BookingPage/> </ProtectedRoute> } />
@@ -67,6 +68,12 @@ function App() {
 
           <Route path="/" element={
           <ProtectedRoute> <HomePage /></ProtectedRoute> } />
+
+
+          <Route path="/mynotes" element={
+          <ProtectedRoute> <Notes/></ProtectedRoute> } />
+
+          
 
 
           

@@ -22,10 +22,6 @@ const Profile = () => {
       const res = await axios.post("/api/v1/doctor/updateProfile", {
         ...values,
         userId: user._id,
-        // timings:[
-        //   moment(values.timings[0],'HH:mm'),
-        //   moment(values.timings[1],'HH:mm')
-        // ]},
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

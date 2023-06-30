@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
    
     {
         name:'Profile',
-        path:`/doctor/profile/${user?._id}`,
+        path:`/profile/${user?._id}`,
         icon:'fa-solid fa-user',
     },
  
@@ -45,7 +45,7 @@ const Layout = ({ children }) => {
   //doctor menu
 
   // rendering menulist
-  const SidebarMenu = user?.isAdmin ? adminMenu : user?.idDoctor ? doctorMenu : userMenu;
+  const SidebarMenu = user?.isAdmin ? adminMenu : user?.isDoctor ? doctorMenu : userMenu;
   return (
     <>
       <div className="main">

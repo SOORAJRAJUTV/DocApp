@@ -25,3 +25,17 @@
   margin: auto ;
  
 }
+
+.link{
+  padding:10px;
+  font-size: 1.2rem;
+  color:blue;
+  margin:0 10px;
+  text-transform: uppercase;
+  
+}
+
+a{
+  text-decoration: none;
+
+}

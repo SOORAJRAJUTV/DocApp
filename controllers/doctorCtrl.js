@@ -136,8 +136,8 @@ const updateStatusController = async (req, res) => {
     const user = await userModel.findOne({ _id: appointments.userId });
     const notification = user.notification;
     notification.push({
-      type: "status-updated",
-      message: `your appointment has been updated ${status}`,
+      type: "status",
+      message: `your appointment has been ${status}`,
       onCLickPath: "/doctor-appointments",
     });
     await user.save();
