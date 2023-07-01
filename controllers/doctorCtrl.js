@@ -10,6 +10,7 @@ const getDoctorInfoController = async (req, res) => {
       message: "doctor data fetch success",
       data: doctor,
     });
+    console.log("doc data",data);
   } catch (error) {
     console.log(error);
     res.status(500).send({
@@ -108,6 +109,7 @@ const getDoctorByIdController = async (req, res) => {
 const doctorAppointmentsController = async (req, res) => {
   try {
     const doctor = await doctorModel.findOne({ userId: req.body.userId });
+   
     const appointments = await appointmentModel.find({
       doctorId: doctor._id,
     });

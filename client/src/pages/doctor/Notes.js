@@ -1,4 +1,5 @@
-import React from "react";
+import  React from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Layout from "../../components/Layout";
 import { Card, Input } from "antd";
@@ -7,6 +8,13 @@ const Notes = () => {
   const onChange = (e) => {
     console.log(e);
   };
+  const navigate = useNavigate()
+
+  const handleClick = () =>{
+      alert("Succesfully submitted");
+      navigate("/doctor-appointments");
+      
+  }
 
   return (
     <Layout>
@@ -35,8 +43,8 @@ const Notes = () => {
           </Card>
 
 
-          <button className="btn btn-success ">Edit</button>
-          <button className="btn btn-danger ms-2">Delete</button>
+          <button className="btn btn-success" onClick={handleClick}>Submit</button>
+          
         </Card>
       </div>
     </Layout>

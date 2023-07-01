@@ -99,8 +99,8 @@ const DoctorAppointments = () => {
         <div className="d-flex">
           {record.status === "pending" && (
             <div className="d-flex">
-              <button className="btn btn-success" onClick={() => handleStatus(record, "approved")} >Approved</button>
-              <button  className="btn btn-danger" onClick={() => handleStatus(record, "rejected")}> Rejected</button>
+              <button className="btn btn-success " onClick={() => handleStatus(record, "approved")} >Approve</button>
+              <button  className="btn btn-danger ms-2" onClick={() => handleStatus(record, "rejected")}> Reject</button>
             </div>
           )}
         </div>
@@ -114,7 +114,7 @@ const DoctorAppointments = () => {
         <div className="d-flex">
           {record.status === "approved" && (
             <div className="d-flex">
-              <button className="btn btn-success" onClick={()=>(navigate("/mynotes"))} >View</button>
+              <button className="btn btn-success" onClick={()=>(navigate("/mynotes"))} >Prescription</button>
              </div>
           )}
         </div>
